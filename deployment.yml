@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: techverito
+  name: hello-world
+  labels:
+    app: hello-world
+    tier: backendservice
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: hello-world-pod
+      labels:
+        app: hello-world
+    spec:
+      containers:
+        - name: hello-world
+          image: 620247380622.dkr.ecr.ap-south-1.amazonaws.com/test:latest
+          env:
+            - name: TZ
+              value: Asia/Kolkata
+  selector:
+    matchLabels:
+        app: hello-world
